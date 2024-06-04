@@ -1,0 +1,18 @@
+{
+  "item.hanyaweapons.dimensionalblade": "§bDimensional Katana",
+  "item.hanyaweapons.dimensionalkatana": "§bDimensional Katana",
+  "item.hanyaweapons.dullblade": "Deepslate Blade",
+  "item.hanyaweapons.piglinstaff": "Piglin Staff",
+  "item.hanyaweapons.invertedspear": "Inverted Spear Of The Aether",
+  "item.hanyaweapons.cursedkatana": "Cursed Katana",
+  "item.hanyaweapons.fastfist": "Fast Fist Style",
+  "item.hanyaweapons.wheelofperfection": "Wheel of Perfection",
+
+  "tooltip.hanyaweapons.dimensionalkatana": "A blade capable of cutting through reality itself. §aCompletely Ignores Target's Armor!",
+  "tooltip.hanyaweapons.wheelofperfection": "A Sacred treasure lost to time... §aGrants the wearer permanent regeneration!",
+
+
+
+
+  "creativetab.hanyaweapons": "HanyaWeapons"
+}
