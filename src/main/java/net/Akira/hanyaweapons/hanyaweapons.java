@@ -1,6 +1,7 @@
 package net.Akira.hanyaweapons;
 
 import com.mojang.logging.LogUtils;
+import net.Akira.hanyaweapons.init.HanyaWeaponsEntities;
 import net.Akira.hanyaweapons.item.ModCreativeModeTabs;
 import net.Akira.hanyaweapons.item.Moditems;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -34,6 +35,7 @@ public class hanyaweapons {
 
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
+        HanyaWeaponsEntities.register(modEventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -43,12 +45,7 @@ public class hanyaweapons {
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {
             // Add items to the creative mode tab here
-            event.accept(Moditems.DIMENSIONALBLADE.get());
-            event.accept(Moditems.DULLBLADE.get());
-            event.accept(Moditems.PIGLINSTAFF.get());
-            event.accept(Moditems.INVERTEDSPEAR.get());
-            event.accept(Moditems.CURSEDKATANA.get());
-            event.accept(Moditems.FASTFIST.get());
+
         }
     }
 

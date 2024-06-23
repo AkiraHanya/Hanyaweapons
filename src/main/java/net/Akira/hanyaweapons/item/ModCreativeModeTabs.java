@@ -15,17 +15,20 @@ public class ModCreativeModeTabs {
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, hanyaweapons.MOD_ID);
 
     public static final RegistryObject<CreativeModeTab> HANYA_WEAPONS = CREATIVE_MODE_TABS.register("hanyaweapons",
-            () -> CreativeModeTab.builder().icon(()-> new ItemStack(Moditems.DIMENSIONALBLADE.get()))
+            () -> CreativeModeTab.builder().icon(()-> new ItemStack(Moditems.DIMENSIONALKATANA.get()))
                     .title(Component.translatable("creativetab.hanyaweapons"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(Moditems.DIMENSIONALKATANA.get());
-                        output.accept(Moditems.WHEELOFPERFECTION.get());
+                        output.accept(Moditems.CURSEDKATANA.get());
+                        output.accept(Moditems.MARTIALART.get());
                         output.accept(Moditems.DULLBLADE.get());
                         output.accept(Moditems.PIGLINSTAFF.get());
                         output.accept(Moditems.INVERTEDSPEAR.get());
-                        output.accept(Moditems.CURSEDKATANA.get());
-                        output.accept(Moditems.FASTFIST.get());
-
+                        output.accept(Moditems.ENDERBLASTERPLUS.get());
+                        output.accept(Moditems.SAKURARAPIER.get());
+                        output.accept(Moditems.TACHYBLADE.get());
+                        output.accept(Moditems.AETHERBREAKER.get());
+                        output.accept(Moditems.KATANABASIC.get());
 
                     })
                     .build());
