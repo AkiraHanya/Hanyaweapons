@@ -1,8 +1,6 @@
-package net.Akira.hanyaweapons.item.weapons;
+package net.akira.hanyaweapons.item.weapons;
 
 import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -14,7 +12,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Random;
 
-public class DullBlade extends SwordItem {
+public class CursedKatana extends SwordItem {
     public static final Tier CUSTOM_TIER = new Tier() {
         @Override
         public int getUses() {
@@ -47,17 +45,17 @@ public class DullBlade extends SwordItem {
         }
     };
 
-    public DullBlade() {
-        super(CUSTOM_TIER, 5, -2.75F, new Item.Properties());
+    public CursedKatana() {
+        super(CUSTOM_TIER, 5, -2.2F, new Item.Properties());
     }
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.translatable("tooltip.hanyaweapons.dullblade"));
-        tooltip.add(Component.translatable("tooltip.hanyaweapons.dullblade1"));
-        tooltip.add(Component.translatable("tooltip.hanyaweapons.dullblade2")); // Add the tooltip text
+        tooltip.add(Component.translatable("tooltip.hanyaweapons.cursedkatana"));
+        tooltip.add(Component.translatable("tooltip.hanyaweapons.cursedkatana1"));
+        tooltip.add(Component.translatable("tooltip.hanyaweapons.cursedkatana2"));// Add the tooltip text
         super.appendHoverText(stack, world, tooltip, flag); // Ensure superclass method is called
-    }
+    } //?
 
     @Override
     public boolean isEnchantable(ItemStack stack) {
@@ -66,18 +64,12 @@ public class DullBlade extends SwordItem {
 
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        if (attacker != null && attacker.getMainHandItem().getItem() instanceof DullBlade) {
-            Random random = new Random();
-            if (random.nextDouble() < 0.11) {
-                target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 25, 2, false, true));
-                target.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 25, 2, false, true));
-                target.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 35, 3, false, true));
-
-
-                target.getCommandSenderWorld().playSound(null, target.getX(), target.getY(), target.getZ(),
-                        SoundEvents.ANVIL_LAND, SoundSource.PLAYERS, 1.0F, 1.0F);
-            }
+        Random random = new Random();
+        if (random.nextDouble() < 0.05) { // 5% chance
+            // Apply Darkness and Wither effects
+            target.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 60, 0)); // 3 seconds
+            target.addEffect(new MobEffectInstance(MobEffects.WITHER, 60, 3)); // 3 seconds
         }
-        return super.hurtEnemy(stack, target, attacker);
+        return super.hurtEnemy(stack, target, attacker); // Ensure superclass method is called
     }
 }

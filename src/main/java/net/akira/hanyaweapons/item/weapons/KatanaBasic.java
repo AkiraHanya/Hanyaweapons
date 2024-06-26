@@ -1,4 +1,4 @@
-package net.Akira.hanyaweapons.item.weapons;
+package net.akira.hanyaweapons.item.weapons;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
@@ -8,7 +8,7 @@ import net.minecraft.world.level.Level;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class DimensionalKatana extends SwordItem {
+public class KatanaBasic extends SwordItem {
     public static final Tier CUSTOM_TIER = new Tier() {
         @Override
         public int getUses() {
@@ -22,7 +22,7 @@ public class DimensionalKatana extends SwordItem {
 
         @Override
         public float getAttackDamageBonus() {
-            return 4.0F; // Additional damage
+            return 1.5F; // Additional damage
         }
 
         @Override
@@ -41,15 +41,15 @@ public class DimensionalKatana extends SwordItem {
         }
     };
 
-    public DimensionalKatana() {
+    public KatanaBasic() {
         super(CUSTOM_TIER, 5, -2.4F, new Item.Properties());
     }
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.translatable("tooltip.hanyaweapons.dimensionalkatana"));
-        tooltip.add(Component.translatable("tooltip.hanyaweapons.dimensionalkatana1"));
-        tooltip.add(Component.translatable("tooltip.hanyaweapons.dimensionalkatana2"));// Add the tooltip text
+        //tooltip.add(Component.translatable("tooltip.hanyaweapons.dimensionalkatana"));
+        //tooltip.add(Component.translatable("tooltip.hanyaweapons.dimensionalkatana1"));
+        //tooltip.add(Component.translatable("tooltip.hanyaweapons.dimensionalkatana2"));// Add the tooltip text
         super.appendHoverText(stack, world, tooltip, flag); // Ensure superclass method is called
     }
 

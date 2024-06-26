@@ -1,6 +1,8 @@
-package net.Akira.hanyaweapons.item.weapons;
+package net.akira.hanyaweapons.item.weapons;
 
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -12,7 +14,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Random;
 
-public class TachyBlade extends SwordItem {
+public class DullBlade extends SwordItem {
     public static final Tier CUSTOM_TIER = new Tier() {
         @Override
         public int getUses() {
@@ -26,7 +28,7 @@ public class TachyBlade extends SwordItem {
 
         @Override
         public float getAttackDamageBonus() {
-            return 1.5F; // Additional damage
+            return 2.0F; // Additional damage
         }
 
         @Override
@@ -45,15 +47,15 @@ public class TachyBlade extends SwordItem {
         }
     };
 
-    public TachyBlade() {
-        super(CUSTOM_TIER, 5, -2.0F, new Item.Properties());
+    public DullBlade() {
+        super(CUSTOM_TIER, 5, -2.75F, new Item.Properties());
     }
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.translatable("tooltip.hanyaweapons.tachyblade"));
-        tooltip.add(Component.translatable("tooltip.hanyaweapons.tachyblade1"));
-        tooltip.add(Component.translatable("tooltip.hanyaweapons.tachyblade2"));// Add the tooltip text
+        tooltip.add(Component.translatable("tooltip.hanyaweapons.dullblade"));
+        tooltip.add(Component.translatable("tooltip.hanyaweapons.dullblade1"));
+        tooltip.add(Component.translatable("tooltip.hanyaweapons.dullblade2")); // Add the tooltip text
         super.appendHoverText(stack, world, tooltip, flag); // Ensure superclass method is called
     }
 
@@ -64,14 +66,16 @@ public class TachyBlade extends SwordItem {
 
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        Random random = new Random();
-        if (random.nextFloat() < 0.25) { // 20% chance
-            MobEffectInstance currentEffect = attacker.getEffect(MobEffects.DIG_SPEED);
-            int currentLevel = (currentEffect != null) ? currentEffect.getAmplifier() : -1;
-            if (currentLevel < 2) { // Max level is Haste III (amplifier 2)
-                attacker.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, 60, currentLevel + 1, true, false ,true)); // 600 ticks = 30 seconds
-            } else {
-                attacker.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, 60, currentLevel, true, false,true )); // Refresh duration if already at max level
+        if (attacker != null && attacker.getMainHandItem().getItem() instanceof DullBlade) {
+            Random random = new Random();
+            if (random.nextDouble() < 0.11) {
+                target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 25, 2, false, true));
+                target.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 25, 2, false, true));
+                target.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 35, 3, false, true));
+
+
+                target.getCommandSenderWorld().playSound(null, target.getX(), target.getY(), target.getZ(),
+                        SoundEvents.ANVIL_LAND, SoundSource.PLAYERS, 1.0F, 1.0F);
             }
         }
         return super.hurtEnemy(stack, target, attacker);

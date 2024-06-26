@@ -1,6 +1,9 @@
-package net.Akira.hanyaweapons.item.weapons;
+package net.akira.hanyaweapons.item.weapons;
 
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
@@ -8,7 +11,7 @@ import net.minecraft.world.level.Level;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class EnderBlasterPlus extends SwordItem {
+public class InvertedSpear extends SwordItem {
     public static final Tier CUSTOM_TIER = new Tier() {
         @Override
         public int getUses() {
@@ -22,7 +25,7 @@ public class EnderBlasterPlus extends SwordItem {
 
         @Override
         public float getAttackDamageBonus() {
-            return 3.0F; // Additional damage
+            return 2.5F; // Additional damage
         }
 
         @Override
@@ -41,15 +44,16 @@ public class EnderBlasterPlus extends SwordItem {
         }
     };
 
-    public EnderBlasterPlus () {
-        super(CUSTOM_TIER, 3, -1.5F, new Item.Properties());
+    public InvertedSpear() {
+        super(CUSTOM_TIER, 3, -1.25F, new Item.Properties());
     }
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.translatable("tooltip.hanyaweapons.enderblasterplus"));
-        //tooltip.add(Component.translatable("tooltip.hanyaweapons.enderblasterplus1"));
-        //tooltip.add(Component.translatable("tooltip.hanyaweapons.enderblasterplus2"));// Add the tooltip text
+        tooltip.add(Component.translatable("tooltip.hanyaweapons.invertedspear"));
+        tooltip.add(Component.translatable("tooltip.hanyaweapons.invertedspear1"));
+        tooltip.add(Component.translatable("tooltip.hanyaweapons.invertedspear2"));
+        // Add the tooltip text
         super.appendHoverText(stack, world, tooltip, flag); // Ensure superclass method is called
     }
 
@@ -58,4 +62,15 @@ public class EnderBlasterPlus extends SwordItem {
         return true; // Ensure the item is enchantable
     }
 
+    @Override
+    public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        if (target != null && !target.getActiveEffects().isEmpty()) {
+            target.removeAllEffects(); // Remove all status effects from the target
+
+            // Play the zombie curing sound
+            target.getCommandSenderWorld().playSound(null, target.getX(), target.getY(), target.getZ(),
+                    SoundEvents.ZOMBIE_VILLAGER_CURE, SoundSource.PLAYERS, 1.0F, 1.0F);
+        }
+        return super.hurtEnemy(stack, target, attacker); // Ensure superclass method is called
+    }
 }

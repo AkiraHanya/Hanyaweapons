@@ -1,9 +1,9 @@
-package net.Akira.hanyaweapons;
+package net.akira.hanyaweapons;
 
 import com.mojang.logging.LogUtils;
-import net.Akira.hanyaweapons.init.HanyaWeaponsEntities;
-import net.Akira.hanyaweapons.item.ModCreativeModeTabs;
-import net.Akira.hanyaweapons.item.Moditems;
+import net.akira.hanyaweapons.init.HanyaEntities;
+import net.akira.hanyaweapons.item.ModCreativeModeTabs;
+import net.akira.hanyaweapons.item.Moditems;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -18,24 +18,26 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(hanyaweapons.MOD_ID)
-public class hanyaweapons {
+@Mod(HanyaWeapons.MOD_ID)
+public class HanyaWeapons {
+
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "hanyaweapons";
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public hanyaweapons() {
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+    public HanyaWeapons() {
+        MinecraftForge.EVENT_BUS.register(this);
+        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        ModCreativeModeTabs.register(modEventBus);
-        Moditems.register(modEventBus);
+        ModCreativeModeTabs.register(bus);
+        Moditems.register(bus);
 
-        modEventBus.addListener(this::commonSetup);
+        bus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
-        modEventBus.addListener(this::addCreative);
-        HanyaWeaponsEntities.register(modEventBus);
+        bus.addListener(this::addCreative);
+        HanyaEntities.REGISTRY.register(bus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

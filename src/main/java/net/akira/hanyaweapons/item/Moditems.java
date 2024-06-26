@@ -1,10 +1,8 @@
-package net.Akira.hanyaweapons.item;
+package net.akira.hanyaweapons.item;
 
-import net.Akira.hanyaweapons.item.weapons.*;
-import net.Akira.hanyaweapons.item.armor.WheelOfPerfection;
+import net.akira.hanyaweapons.item.weapons.*;
+import net.akira.hanyaweapons.item.armor.WheelOfPerfection;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.Tiers;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;

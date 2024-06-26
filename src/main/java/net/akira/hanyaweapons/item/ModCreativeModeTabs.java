@@ -1,18 +1,17 @@
-package net.Akira.hanyaweapons.item;
+package net.akira.hanyaweapons.item;
 
-import net.Akira.hanyaweapons.hanyaweapons;
+import net.akira.hanyaweapons.HanyaWeapons;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
 public class ModCreativeModeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
-            DeferredRegister.create(Registries.CREATIVE_MODE_TAB, hanyaweapons.MOD_ID);
+            DeferredRegister.create(Registries.CREATIVE_MODE_TAB, HanyaWeapons.MOD_ID);
 
     public static final RegistryObject<CreativeModeTab> HANYA_WEAPONS = CREATIVE_MODE_TABS.register("hanyaweapons",
             () -> CreativeModeTab.builder().icon(()-> new ItemStack(Moditems.DIMENSIONALKATANA.get()))
