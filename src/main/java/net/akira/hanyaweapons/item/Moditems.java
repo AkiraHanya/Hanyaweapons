@@ -1,7 +1,6 @@
 package net.akira.hanyaweapons.item;
 
 import net.akira.hanyaweapons.item.weapons.*;
-import net.akira.hanyaweapons.item.armor.WheelOfPerfection;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -16,7 +15,6 @@ public class Moditems {
     public static final RegistryObject<Item> INVERTEDSPEAR;
     public static final RegistryObject<Item> CURSEDKATANA;
     public static final RegistryObject<Item> DIMENSIONALKATANA;
-    public static final RegistryObject<Item> WHEELOFPERFECTION;
     public static final RegistryObject<Item> MARTIALART; // Register the WheelOfPerfection
     public static final RegistryObject<Item> ENDERBLASTERPLUS;
     public static final RegistryObject<Item> SAKURARAPIER;
@@ -39,7 +37,6 @@ public class Moditems {
         TACHYBLADE = ITEMS.register("tachyblade", TachyBlade::new);
         AETHERBREAKER = ITEMS.register("aetherbreaker", AetherBreaker::new);
         KATANABASIC = ITEMS.register("katanabasic", KatanaBasic::new);
-        WHEELOFPERFECTION = ITEMS.register("wheelofperfection", WheelOfPerfection::new); // Register the WheelOfPerfection
     }
 
     public static void register(IEventBus eventBus) {
