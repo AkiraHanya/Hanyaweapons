@@ -1,4 +1,4 @@
-package net.akira.hanyaweapons.init;
+package net.akira.hanyaweapons.gameassets;
 
 import net.akira.hanyaweapons.entity.client.PiglinKingRenderer;
 

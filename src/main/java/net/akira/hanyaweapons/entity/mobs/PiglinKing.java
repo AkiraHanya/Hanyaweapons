@@ -1,6 +1,6 @@
 package net.akira.hanyaweapons.entity.mobs;
 
-import net.akira.hanyaweapons.init.HanyaEntities;
+import net.akira.hanyaweapons.gameassets.HanyaEntities;
 import net.akira.hanyaweapons.item.Moditems;
 
 import net.minecraftforge.registries.ForgeRegistries;
