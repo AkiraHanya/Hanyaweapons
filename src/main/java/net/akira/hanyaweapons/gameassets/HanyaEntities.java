@@ -1,5 +1,6 @@
 package net.akira.hanyaweapons.gameassets;
 
+import net.akira.hanyaweapons.entity.mobs.AkiraHanya;
 import net.akira.hanyaweapons.entity.mobs.PiglinKing;
 
 import net.minecraftforge.registries.RegistryObject;
@@ -19,9 +20,10 @@ public class HanyaEntities {
     public static final DeferredRegister<EntityType<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, "hanyaweapons");
     public static final RegistryObject<EntityType<PiglinKing>> PIGLINKING = register("piglin_king",
             EntityType.Builder.<PiglinKing>of(PiglinKing::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(PiglinKing::new)
-
-                    .sized(0.6f, 1.8f));
-
+                    .sized(1.0f, 2.5f));
+    public static final RegistryObject<EntityType<AkiraHanya>> AKIRAHANYA = register("akirahanya",
+            EntityType.Builder.<AkiraHanya>of(AkiraHanya::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(AkiraHanya::new)
+                    .sized(1.2f, 2.5f));
     private static <T extends Entity> RegistryObject<EntityType<T>> register(String registryname, EntityType.Builder<T> entityTypeBuilder) {
         return REGISTRY.register(registryname, () -> (EntityType<T>) entityTypeBuilder.build(registryname));
     }
@@ -30,11 +32,13 @@ public class HanyaEntities {
     public static void init(FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
             PiglinKing.init();
+            AkiraHanya.init();
         });
     }
 
     @SubscribeEvent
     public static void registerAttributes(EntityAttributeCreationEvent event) {
         event.put(PIGLINKING.get(), PiglinKing.createAttributes().build());
+        event.put(AKIRAHANYA.get(), PiglinKing.createAttributes().build());
     }
 }

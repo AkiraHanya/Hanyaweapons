@@ -1,11 +1,12 @@
 package net.akira.hanyaweapons.item;
 
-import net.akira.hanyaweapons.item.weapons.*;
+import net.akira.hanyaweapons.item.equipment.*;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
 
 public class Moditems {
 
@@ -22,6 +23,10 @@ public class Moditems {
     public static final RegistryObject<Item> AETHERBREAKER;
     public static final RegistryObject<Item> KATANABASIC;
     public static final RegistryObject<Item> SUNKENANCHOR;
+    public static final RegistryObject<Item> FROSTBITE;
+    public static final RegistryObject<Item> JUMONJIYARI;
+    public static final RegistryObject<Item> GLUTTONY;
+    public static final RegistryObject<Item> PIGLINCROWN;
     static {
 
 
@@ -37,6 +42,10 @@ public class Moditems {
         TACHYBLADE = ITEMS.register("tachyblade", TachyBlade::new);
         AETHERBREAKER = ITEMS.register("aetherbreaker", AetherBreaker::new);
         KATANABASIC = ITEMS.register("katanabasic", KatanaBasic::new);
+        FROSTBITE = ITEMS.register("frostbite", FrostBite::new);
+        JUMONJIYARI = ITEMS.register("jumonjiyari", JumonjiYari::new);
+        GLUTTONY = ITEMS.register("gluttony", Gluttony::new);
+        PIGLINCROWN = ITEMS.register("piglincrown", PiglinCrown::new);
     }
 
     public static void register(IEventBus eventBus) {

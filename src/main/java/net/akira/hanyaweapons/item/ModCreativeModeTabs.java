@@ -28,7 +28,10 @@ public class ModCreativeModeTabs {
                         output.accept(Moditems.TACHYBLADE.get());
                         output.accept(Moditems.AETHERBREAKER.get());
                         output.accept(Moditems.KATANABASIC.get());
-
+                        output.accept(Moditems.FROSTBITE.get());
+                        output.accept(Moditems.JUMONJIYARI.get());
+                        output.accept(Moditems.GLUTTONY.get());
+                        output.accept(Moditems.PIGLINCROWN.get());
                     })
                     .build());
 

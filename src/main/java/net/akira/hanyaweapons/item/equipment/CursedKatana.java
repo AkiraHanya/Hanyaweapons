@@ -1,4 +1,4 @@
-package net.akira.hanyaweapons.item.weapons;
+package net.akira.hanyaweapons.item.equipment;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;

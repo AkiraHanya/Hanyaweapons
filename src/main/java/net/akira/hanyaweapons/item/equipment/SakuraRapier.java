@@ -1,9 +1,10 @@
-package net.akira.hanyaweapons.item.weapons;
+package net.akira.hanyaweapons.item.equipment;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
@@ -12,7 +13,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Random;
 
-public class PiglinStaff extends SwordItem {
+public class SakuraRapier extends SwordItem {
     public static final Tier CUSTOM_TIER = new Tier() {
         @Override
         public int getUses() {
@@ -45,15 +46,15 @@ public class PiglinStaff extends SwordItem {
         }
     };
 
-    public PiglinStaff() {
-        super(CUSTOM_TIER, 5, -1.8F, new Item.Properties());
+    public SakuraRapier() {
+        super(CUSTOM_TIER, 3, -2.45F, new Item.Properties());
     }
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.translatable("tooltip.hanyaweapons.piglinstaff"));
-        tooltip.add(Component.translatable("tooltip.hanyaweapons.piglinstaff1"));
-        tooltip.add(Component.translatable("tooltip.hanyaweapons.piglinstaff2"));
+        tooltip.add(Component.translatable("tooltip.hanyaweapons.sakurarapier"));
+        tooltip.add(Component.translatable("tooltip.hanyaweapons.sakurarapier1"));
+        tooltip.add(Component.translatable("tooltip.hanyaweapons.sakurarapier2"));
         super.appendHoverText(stack, world, tooltip, flag);
     }
 
@@ -64,14 +65,26 @@ public class PiglinStaff extends SwordItem {
 
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        Random random = new Random();
-        if (random.nextDouble() < 0.13) {
-            if (attacker instanceof LivingEntity) {
-                attacker.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 300, 1, false, true));
-                attacker.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, 300, 0, false, true));
-                attacker.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 300, 0, false, true));
-            }
+        if (attacker instanceof Player) {
+            applyPoisonEffect(target);
         }
         return super.hurtEnemy(stack, target, attacker);
+    }
+
+    private void applyPoisonEffect(LivingEntity target) {
+        Random random = new Random();
+        if (random.nextFloat() < 0.25) {
+            int currentPoisonLevel = 0;
+            for (MobEffectInstance effect : target.getActiveEffects()) {
+                if (effect.getEffect() == MobEffects.POISON) {
+                    currentPoisonLevel = effect.getAmplifier() + 1;
+                    break;
+                }
+            }
+
+            if (currentPoisonLevel < 3) {
+                target.addEffect(new MobEffectInstance(MobEffects.POISON, 7 * 20, currentPoisonLevel));
+            }
+        }
     }
 }

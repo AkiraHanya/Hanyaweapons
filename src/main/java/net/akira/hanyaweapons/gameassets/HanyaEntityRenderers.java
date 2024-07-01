@@ -1,5 +1,6 @@
 package net.akira.hanyaweapons.gameassets;
 
+import net.akira.hanyaweapons.entity.client.AkiraHanyaRenderer;
 import net.akira.hanyaweapons.entity.client.PiglinKingRenderer;
 
 
@@ -13,5 +14,6 @@ public class HanyaEntityRenderers {
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(HanyaEntities.PIGLINKING.get(), PiglinKingRenderer::new);
+        event.registerEntityRenderer(HanyaEntities.AKIRAHANYA.get(), AkiraHanyaRenderer::new);
     }
 }

@@ -3,11 +3,6 @@ package net.akira.hanyaweapons.entity.mobs;
 import net.akira.hanyaweapons.gameassets.HanyaEntities;
 import net.akira.hanyaweapons.item.Moditems;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.monster.piglin.Piglin;
-import net.minecraft.world.entity.monster.piglin.PiglinBrute;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.network.PlayMessages;
 import net.minecraftforge.network.NetworkHooks;
@@ -15,8 +10,6 @@ import net.minecraftforge.network.NetworkHooks;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
@@ -25,10 +18,6 @@ import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.AttributeInstance;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.Mob;
@@ -41,23 +30,18 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.Packet;
-import net.minecraft.sounds.SoundEvents;
-import org.lwjgl.system.windows.MONITORINFOEX;
 
-public class PiglinKing extends Monster {
-    private boolean buffsApplied = false;
-
-    public PiglinKing(PlayMessages.SpawnEntity packet, Level world) {
-        this(HanyaEntities.PIGLINKING.get(), world);
+public class AkiraHanya extends Monster {
+    public AkiraHanya(PlayMessages.SpawnEntity packet, Level world) {
+        this(HanyaEntities.AKIRAHANYA.get(), world);
     }
 
-    public PiglinKing(EntityType<PiglinKing> type, Level world) {
+    public AkiraHanya(EntityType<AkiraHanya> type, Level world) {
         super(type, world);
         setMaxUpStep(1.0f);
         xpReward = 50;
         setNoAi(false);
-        this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Moditems.PIGLINSTAFF.get()));
-        this.setItemSlot(EquipmentSlot.HEAD, new ItemStack(Items.GOLDEN_HELMET));
+        this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Moditems.DIMENSIONALKATANA.get()));
     }
 
     @Override
@@ -81,64 +65,31 @@ public class PiglinKing extends Monster {
     }
 
     @Override
-    public void aiStep() {
-        super.aiStep();
-        if (this.getHealth() <= this.getMaxHealth() * 0.5 && !buffsApplied) {
-            this.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 999999, 1, false, false));
-            this.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 999999, 1, false, false));
-
-            this.getCommandSenderWorld().playSound(null, this.getX(), this.getY(), this.getZ(),
-                    ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.piglin_brute.angry")),
-                    SoundSource.HOSTILE, 1.0F, 1.0F);
-
-            buffsApplied = true;
-        }
-    }
-
-
-    @Override
     public MobType getMobType() {
         return MobType.UNDEFINED;
     }
 
     @Override
-    public SoundEvent getAmbientSound() {
-        return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.piglin_brute.ambient"));
-    }
-
-    @Override
     public SoundEvent getHurtSound(DamageSource ds) {
-        return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.piglin_brute.hurt"));
+        return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.generic.hurt"));
     }
 
     @Override
     public SoundEvent getDeathSound() {
-        return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.piglin_brute.death"));
-    }
-
-    @Override
-    protected void playStepSound(BlockPos pos, BlockState blockIn) {
-        this.playSound(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.piglin_brute.step")), 0.15F, 1.0F);
-    }
-
-    @Override
-    protected void dropCustomDeathLoot(DamageSource source, int looting, boolean recentlyHit) {
-        super.dropCustomDeathLoot(source, looting, recentlyHit);
-        this.spawnAtLocation(new ItemStack(Moditems.PIGLINSTAFF.get()));
-        this.spawnAtLocation(new ItemStack(Items.GOLD_BLOCK));
+        return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.generic.death"));
     }
 
     public static void init() {
-        SpawnPlacements.register(HanyaEntities.PIGLINKING.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+        SpawnPlacements.register(HanyaEntities.AKIRAHANYA.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 (entityType, world, reason, pos, random) -> (world.getDifficulty() != Difficulty.PEACEFUL && Monster.isDarkEnoughToSpawn(world, pos, random) && Mob.checkMobSpawnRules(entityType, world, reason, pos, random)));
     }
 
     public static AttributeSupplier.Builder createAttributes() {
         AttributeSupplier.Builder builder = Mob.createMobAttributes();
-        builder = builder.add(Attributes.MOVEMENT_SPEED, 0.6);
-        builder = builder.add(Attributes.MAX_HEALTH, 400);
-        builder = builder.add(Attributes.ARMOR, 5);
-        builder = builder.add(Attributes.ATTACK_DAMAGE, 1);
+        builder = builder.add(Attributes.MOVEMENT_SPEED, 0.5);
+        builder = builder.add(Attributes.MAX_HEALTH, 350);
+        builder = builder.add(Attributes.ARMOR, 10);
+        builder = builder.add(Attributes.ATTACK_DAMAGE, 3);
         builder = builder.add(Attributes.FOLLOW_RANGE, 64);
         builder = builder.add(Attributes.SPAWN_REINFORCEMENTS_CHANCE);
         return builder;

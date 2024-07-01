@@ -1,4 +1,4 @@
-package net.akira.hanyaweapons.item.weapons;
+package net.akira.hanyaweapons.item.equipment;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Random;
 
-public class AetherBreaker extends SwordItem {
+public class Gluttony extends SwordItem {
     public static final Tier CUSTOM_TIER = new Tier() {
         @Override
         public int getUses() {
@@ -47,15 +47,15 @@ public class AetherBreaker extends SwordItem {
         }
     };
 
-    public AetherBreaker() {
-        super(CUSTOM_TIER, 5, -3.0F, new Item.Properties());
+    public Gluttony() {
+        super(CUSTOM_TIER, 5, -2.5F, new Item.Properties());
     }
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.translatable("tooltip.hanyaweapons.aetherbreaker"));
-        tooltip.add(Component.translatable("tooltip.hanyaweapons.aetherbreaker1"));
-        tooltip.add(Component.translatable("tooltip.hanyaweapons.aetherbreaker2")); // Add the tooltip text
+        tooltip.add(Component.translatable("tooltip.hanyaweapons.gluttony"));
+        tooltip.add(Component.translatable("tooltip.hanyaweapons.gluttony1"));
+        tooltip.add(Component.translatable("tooltip.hanyaweapons.gluttony2")); // Add the tooltip text
         super.appendHoverText(stack, world, tooltip, flag); // Ensure superclass method is called
     }
 
@@ -66,12 +66,11 @@ public class AetherBreaker extends SwordItem {
 
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        if (attacker != null && attacker.getMainHandItem().getItem() instanceof AetherBreaker) {
+        if (attacker != null && attacker.getMainHandItem().getItem() instanceof Gluttony) {
             Random random = new Random();
             if (random.nextDouble() < 0.2) {
-                target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 25, 2, false, true));
-                target.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 25, 2, false, true));
-                target.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 35, 3, false, true));
+                target.addEffect(new MobEffectInstance(MobEffects.HUNGER, 200, 2, false, true));
+                target.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 60, 3, false, true));
 
 
                 target.getCommandSenderWorld().playSound(null, target.getX(), target.getY(), target.getZ(),

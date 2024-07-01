@@ -1,4 +1,4 @@
-package net.akira.hanyaweapons.item.weapons;
+package net.akira.hanyaweapons.item.equipment;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
@@ -8,54 +8,52 @@ import net.minecraft.world.level.Level;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class KatanaBasic extends SwordItem {
+public class JumonjiYari extends SwordItem {
     public static final Tier CUSTOM_TIER = new Tier() {
         @Override
         public int getUses() {
-            return 0; // Durability
+            return 0;
         }
 
         @Override
         public float getSpeed() {
-            return 9.0F; // Mining speed
+            return 9.0F;
         }
 
         @Override
         public float getAttackDamageBonus() {
-            return 1.5F; // Additional damage
+            return 3.0F;
         }
 
         @Override
         public int getLevel() {
-            return 4; // Mining level
+            return 4;
         }
 
         @Override
         public int getEnchantmentValue() {
-            return 30; // Enchantability
+            return 30;
         }
 
         @Override
         public Ingredient getRepairIngredient() {
-            return Ingredient.of(Items.DIAMOND); // Repair material
+            return Ingredient.of(Items.DIAMOND);
         }
     };
 
-    public KatanaBasic() {
-        super(CUSTOM_TIER, 5, -2.4F, new Item.Properties());
+    public JumonjiYari() {
+        super(CUSTOM_TIER, 6, -1.6F, new Item.Properties());
     }
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag flag) {
-        //tooltip.add(Component.translatable("tooltip.hanyaweapons.dimensionalkatana"));
-        //tooltip.add(Component.translatable("tooltip.hanyaweapons.dimensionalkatana1"));
-        //tooltip.add(Component.translatable("tooltip.hanyaweapons.dimensionalkatana2"));// Add the tooltip text
-        super.appendHoverText(stack, world, tooltip, flag); // Ensure superclass method is called
+        tooltip.add(Component.translatable("tooltip.hanyaweapons.jumonjiyari"));
+        super.appendHoverText(stack, world, tooltip, flag);
     }
 
     @Override
     public boolean isEnchantable(ItemStack stack) {
-        return true; // Ensure the item is enchantable
-
+        return true;
     }
+
 }

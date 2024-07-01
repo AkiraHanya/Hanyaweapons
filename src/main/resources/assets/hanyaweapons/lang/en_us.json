@@ -2,6 +2,7 @@
   "item.hanyaweapons.dimensionalkatana": "§bDimensional Katana",
   "item.hanyaweapons.dullblade": "§3Reinforced Deepblade",
   "item.hanyaweapons.piglinstaff": "§6Tianzhu Staff",
+  "item.hanyaweapons.gluttony": "§6Gluttony",
   "item.hanyaweapons.invertedspear": "§bInverted Spear Of The Aether",
   "item.hanyaweapons.cursedkatana": "§dCursed Katana",
   "item.hanyaweapons.wheelofperfection": "Wheel of Perfection",
@@ -12,6 +13,10 @@
   "item.hanyaweapons.aetherbreaker": "§bAether Breaker",
   "item.hanyaweapons.katanabasic": "Katana",
   "item.hanyaweapons.sunkenanchor": "Sunken Anchor",
+  "item.hanyaweapons.frostbite": "§bFrostbite",
+  "item.hanyaweapons.jumonjiyari": "§bJumonjiyari",
+  "item.hanyaweapons.piglincrown": "§6Piglin Crown",
+  "entity.mobs.hanyaweapons.jumonjiyari": "Piglin King",
 
   "tooltip.hanyaweapons.dimensionalkatana": "A Blade Capable Of Cutting Through Reality Itself.",
   "tooltip.hanyaweapons.dimensionalkatana1": "§bAbility: Dimensional Breach",
@@ -47,6 +52,14 @@
   "tooltip.hanyaweapons.sunkenanchor": "The Anchor Of A Great Ship",
   "tooltip.hanyaweapons.sunkenanchor1": "§bAbility: Brute Force",
   "tooltip.hanyaweapons.sunkenanchor2": "Every Attack Knockbacks The Target!",
+  "tooltip.hanyaweapons.frostbite": "Every Strike Is Painfully Cold.",
+  "tooltip.hanyaweapons.frostbite1": "§bAbility: Frost Blight",
+  "tooltip.hanyaweapons.frostbite2": "Chance To Slow And Frostbite The Target!",
+  "tooltip.hanyaweapons.jumonjiyari": "Command The Power Of Thunder!",
+  "tooltip.hanyaweapons.gluttony": "Devour Everything.",
+  "tooltip.hanyaweapons.gluttony1": "§bAbility: Curse Of Gluttony",
+  "tooltip.hanyaweapons.gluttony2": "Make Your Target Starve!",
+
 
   "creativetab.hanyaweapons": "HanyaWeapons"
 }
