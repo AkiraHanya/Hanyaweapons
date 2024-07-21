@@ -2,6 +2,7 @@ package net.akira.hanyaweapons;
 
 import com.mojang.logging.LogUtils;
 import net.akira.hanyaweapons.gameassets.HanyaEntities;
+import net.akira.hanyaweapons.item.ModArmorMaterials;
 import net.akira.hanyaweapons.item.ModCreativeModeTabs;
 import net.akira.hanyaweapons.item.Moditems;
 import net.minecraft.world.item.CreativeModeTabs;

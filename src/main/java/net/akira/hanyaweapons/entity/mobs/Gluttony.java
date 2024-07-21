@@ -8,8 +8,10 @@ import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.BossEvent;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.piglin.Piglin;
 import net.minecraft.world.entity.monster.piglin.PiglinBrute;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.network.PlayMessages;
@@ -47,21 +49,21 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.sounds.SoundEvents;
 import org.lwjgl.system.windows.MONITORINFOEX;
 
-public class PiglinKing extends Monster {
+public class Gluttony extends Monster {
     private final ServerBossEvent bossInfo;
     private boolean buffsApplied = false;
 
-    public PiglinKing(PlayMessages.SpawnEntity packet, Level world) {
-        this(HanyaEntities.PIGLINKING.get(), world);
+    public Gluttony(PlayMessages.SpawnEntity packet, Level world) {
+        this(HanyaEntities.GLUTTONY.get(), world);
     }
 
-    public PiglinKing(EntityType<PiglinKing> type, Level world) {
+    public Gluttony(EntityType<Gluttony> type, Level world) {
         super(type, world);
         this.bossInfo = new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.PROGRESS);
         setMaxUpStep(1.0f);
-        xpReward = 50;
+        xpReward = 100;
         setNoAi(false);
-        this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Moditems.PIGLINSTAFF.get()));
+        this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Moditems.GLUTTONY.get()));
     }
 
     @Override
@@ -78,10 +80,11 @@ public class PiglinKing extends Monster {
                 return this.mob.getBbWidth() * this.mob.getBbWidth() + entity.getBbWidth();
             }
         });
-        this.goalSelector.addGoal(2, new RandomStrollGoal(this, 1));
-        this.targetSelector.addGoal(3, new HurtByTargetGoal(this));
-        this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
-        this.goalSelector.addGoal(5, new FloatGoal(this));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal(this, Player.class, true, true));
+        this.goalSelector.addGoal(3, new RandomStrollGoal(this, 1));
+        this.targetSelector.addGoal(4, new HurtByTargetGoal(this));
+        this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(6, new FloatGoal(this));
     }
 
     @Override
@@ -134,7 +137,7 @@ public class PiglinKing extends Monster {
     }
 
     public static void init() {
-        SpawnPlacements.register(HanyaEntities.PIGLINKING.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+        SpawnPlacements.register(HanyaEntities.GLUTTONY.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 (entityType, world, reason, pos, random) -> (world.getDifficulty() != Difficulty.PEACEFUL && Monster.isDarkEnoughToSpawn(world, pos, random) && Mob.checkMobSpawnRules(entityType, world, reason, pos, random)));
     }
 
@@ -155,9 +158,9 @@ public class PiglinKing extends Monster {
 
     public static AttributeSupplier.Builder createAttributes() {
         AttributeSupplier.Builder builder = Mob.createMobAttributes();
-        builder = builder.add(Attributes.MOVEMENT_SPEED, 0.5);
-        builder = builder.add(Attributes.MAX_HEALTH, 222);
-        builder = builder.add(Attributes.ARMOR, 3.0);
+        builder = builder.add(Attributes.MOVEMENT_SPEED, 0.65);
+        builder = builder.add(Attributes.MAX_HEALTH, 600);
+        builder = builder.add(Attributes.ARMOR, 10.0);
         builder = builder.add(Attributes.ATTACK_DAMAGE, 0.1);
         builder = builder.add(Attributes.FOLLOW_RANGE, 64);
         builder = builder.add(Attributes.SPAWN_REINFORCEMENTS_CHANCE);

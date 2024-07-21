@@ -1,0 +1,9 @@
+{
+	"parent":minecraft:item/handheld",
+	"textures": {
+	  "layer0": "hanyaweapons:item/dimensionalkatana"
+	},
+	  "overrides": [
+	  {"predicate": {"custom_model_data":1}, "model": "hanyaweapons/dimensionalkatana"}
+	  ]
+}

@@ -46,7 +46,7 @@ public class PiglinStaff extends SwordItem {
     };
 
     public PiglinStaff() {
-        super(CUSTOM_TIER, 5, -1.8F, new Item.Properties());
+        super(CUSTOM_TIER, 5, -1.35F, new Item.Properties());
     }
 
     @Override

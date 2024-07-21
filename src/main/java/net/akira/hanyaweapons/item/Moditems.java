@@ -27,6 +27,8 @@ public class Moditems {
     public static final RegistryObject<Item> JUMONJIYARI;
     public static final RegistryObject<Item> GLUTTONY;
     public static final RegistryObject<Item> PIGLINCROWN;
+    public static final RegistryObject<Item> JUDGEMENTOFAETHER;
+    public static final RegistryObject<Item> SAKURAINGOT;
     static {
 
 
@@ -46,6 +48,9 @@ public class Moditems {
         JUMONJIYARI = ITEMS.register("jumonjiyari", JumonjiYari::new);
         GLUTTONY = ITEMS.register("gluttony", Gluttony::new);
         PIGLINCROWN = ITEMS.register("piglincrown", PiglinCrown::new);
+        JUDGEMENTOFAETHER = ITEMS.register("judgementofaether", JudgementOfAether::new);
+        SAKURAINGOT = ITEMS.register("sakuraingot", SakuraIngot::new);
+
     }
 
     public static void register(IEventBus eventBus) {

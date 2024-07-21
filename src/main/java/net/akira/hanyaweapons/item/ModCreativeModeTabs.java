@@ -9,6 +9,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
+
 public class ModCreativeModeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, HanyaWeapons.MOD_ID);
@@ -18,7 +19,6 @@ public class ModCreativeModeTabs {
                     .title(Component.translatable("creativetab.hanyaweapons"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(Moditems.DIMENSIONALKATANA.get());
-                        output.accept(Moditems.CURSEDKATANA.get());
                         output.accept(Moditems.MARTIALART.get());
                         output.accept(Moditems.DULLBLADE.get());
                         output.accept(Moditems.PIGLINSTAFF.get());
@@ -31,7 +31,8 @@ public class ModCreativeModeTabs {
                         output.accept(Moditems.FROSTBITE.get());
                         output.accept(Moditems.JUMONJIYARI.get());
                         output.accept(Moditems.GLUTTONY.get());
-                        output.accept(Moditems.PIGLINCROWN.get());
+                        output.accept(Moditems.CURSEDKATANA.get());
+                        output.accept(Moditems.SUNKENANCHOR.get());
                     })
                     .build());
 
