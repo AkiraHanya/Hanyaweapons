@@ -19,7 +19,7 @@ public class SunkenAnchor extends SwordItem {
 
         @Override
         public float getSpeed() {
-            return 9.0F; // Mining speed
+            return 8.0F; // Mining speed
         }
 
         @Override
@@ -44,7 +44,7 @@ public class SunkenAnchor extends SwordItem {
     };
 
     public SunkenAnchor() {
-        super(CUSTOM_TIER, 5, -4.0F, new Item.Properties());
+        super(CUSTOM_TIER, 5, -3.2F, new Item.Properties());
     }
 
     @Override

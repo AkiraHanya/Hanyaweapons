@@ -88,9 +88,9 @@ public class PiglinKing extends Monster {
     public void aiStep() {
         super.aiStep();
         if (this.getHealth() <= this.getMaxHealth() * 0.5 && !buffsApplied) {
-            this.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 999999, 0, false, false));
+            this.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 999999, 1, false, false));
             this.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 999999, 1, false, false));
-            this.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 300, 1, false, false));
+            this.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 500, 2, false, false));
 
             this.getCommandSenderWorld().playSound(null, this.getX(), this.getY(), this.getZ(),
                     ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.piglin_brute.angry")),
@@ -156,9 +156,9 @@ public class PiglinKing extends Monster {
     public static AttributeSupplier.Builder createAttributes() {
         AttributeSupplier.Builder builder = Mob.createMobAttributes();
         builder = builder.add(Attributes.MOVEMENT_SPEED, 0.5);
-        builder = builder.add(Attributes.MAX_HEALTH, 222);
-        builder = builder.add(Attributes.ARMOR, 3.0);
-        builder = builder.add(Attributes.ATTACK_DAMAGE, 0.1);
+        builder = builder.add(Attributes.MAX_HEALTH, 250);
+        builder = builder.add(Attributes.ARMOR, 10.0);
+        builder = builder.add(Attributes.ATTACK_DAMAGE, 0.5);
         builder = builder.add(Attributes.FOLLOW_RANGE, 64);
         builder = builder.add(Attributes.SPAWN_REINFORCEMENTS_CHANCE);
         return builder;

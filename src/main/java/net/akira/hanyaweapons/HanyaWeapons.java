@@ -5,6 +5,7 @@ import net.akira.hanyaweapons.gameassets.HanyaEntities;
 import net.akira.hanyaweapons.item.ModArmorMaterials;
 import net.akira.hanyaweapons.item.ModCreativeModeTabs;
 import net.akira.hanyaweapons.item.Moditems;
+import net.akira.hanyaweapons.loot.HanyaWeaponsChestLootTables;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -39,6 +40,8 @@ public class HanyaWeapons {
         MinecraftForge.EVENT_BUS.register(this);
         bus.addListener(this::addCreative);
         HanyaEntities.REGISTRY.register(bus);
+        HanyaWeaponsChestLootTables.LOOT_MODIFIERS.register(bus);
+
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

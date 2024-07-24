@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "SSS",
+    " B ",
+    " B "
+  ],
+  "key":
+  {
+    "B": { "item" : "minecraft:stick" },
+    "S": { "item" : "hanyaweapons:aetheringot" }
+  },
+  "result":
+  {
+    "item" : "hanyaweapons:aetherbreaker",
+    "count" : 1
+  }
+}

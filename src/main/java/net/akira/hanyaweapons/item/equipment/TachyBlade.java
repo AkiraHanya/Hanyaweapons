@@ -68,7 +68,7 @@ public class TachyBlade extends SwordItem {
         if (random.nextFloat() < 0.25) { // 20% chance
             MobEffectInstance currentEffect = attacker.getEffect(MobEffects.DIG_SPEED);
             int currentLevel = (currentEffect != null) ? currentEffect.getAmplifier() : -1;
-            if (currentLevel < 2) { // Max level is Haste III (amplifier 2)
+            if (currentLevel < 4) {
                 attacker.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, 60, currentLevel + 1, true, false ,true)); // 600 ticks = 30 seconds
             } else {
                 attacker.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, 60, currentLevel, true, false,true )); // Refresh duration if already at max level

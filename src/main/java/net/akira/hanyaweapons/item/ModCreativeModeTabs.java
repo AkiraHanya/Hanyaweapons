@@ -18,6 +18,7 @@ public class ModCreativeModeTabs {
             () -> CreativeModeTab.builder().icon(()-> new ItemStack(Moditems.DIMENSIONALKATANA.get()))
                     .title(Component.translatable("creativetab.hanyaweapons"))
                     .displayItems((itemDisplayParameters, output) -> {
+                        output.accept(Moditems.KATANABASIC.get());
                         output.accept(Moditems.DIMENSIONALKATANA.get());
                         output.accept(Moditems.MARTIALART.get());
                         output.accept(Moditems.DULLBLADE.get());
@@ -27,12 +28,18 @@ public class ModCreativeModeTabs {
                         output.accept(Moditems.SAKURARAPIER.get());
                         output.accept(Moditems.TACHYBLADE.get());
                         output.accept(Moditems.AETHERBREAKER.get());
-                        output.accept(Moditems.KATANABASIC.get());
                         output.accept(Moditems.FROSTBITE.get());
                         output.accept(Moditems.JUMONJIYARI.get());
                         output.accept(Moditems.GLUTTONY.get());
                         output.accept(Moditems.CURSEDKATANA.get());
                         output.accept(Moditems.SUNKENANCHOR.get());
+                        output.accept(Moditems.SAKURAINGOT.get());
+                        output.accept(Moditems.SCULKBONE.get());
+                        output.accept(Moditems.SCULKFRAGMENT.get());
+                        output.accept(Moditems.AETHERFRAGMENT.get());
+                        output.accept(Moditems.AETHERINGOT.get());
+                        output.accept(Moditems.DIMENSIONALESSENCE.get());
+                        output.accept(Moditems.NETHERENGINE.get());
                     })
                     .build());
 

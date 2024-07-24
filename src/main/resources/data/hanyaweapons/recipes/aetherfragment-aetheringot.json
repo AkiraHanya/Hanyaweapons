@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "   ",
+    "SSS",
+    "   "
+  ],
+  "key":
+  {
+    "S": { "item" : "hanyaweapons:aetherfragment" }
+  },
+  "result":
+  {
+    "item" : "hanyaweapons:aetheringot",
+    "count" : 1
+  }
+}

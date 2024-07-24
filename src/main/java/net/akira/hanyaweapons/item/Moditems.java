@@ -6,7 +6,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-
+// oh theres more
 
 public class Moditems {
 
@@ -29,6 +29,12 @@ public class Moditems {
     public static final RegistryObject<Item> PIGLINCROWN;
     public static final RegistryObject<Item> JUDGEMENTOFAETHER;
     public static final RegistryObject<Item> SAKURAINGOT;
+    public static final RegistryObject<Item> AETHERFRAGMENT;
+    public static final RegistryObject<Item> AETHERINGOT;
+    public static final RegistryObject<Item> DIMENSIONALESSENCE;
+    public static final RegistryObject<Item> NETHERENGINE;
+    public static final RegistryObject<Item> SCULKBONE;
+    public static final RegistryObject<Item> SCULKFRAGMENT;
     static {
 
 
@@ -50,6 +56,12 @@ public class Moditems {
         PIGLINCROWN = ITEMS.register("piglincrown", PiglinCrown::new);
         JUDGEMENTOFAETHER = ITEMS.register("judgementofaether", JudgementOfAether::new);
         SAKURAINGOT = ITEMS.register("sakuraingot", SakuraIngot::new);
+        NETHERENGINE= ITEMS.register("netherengine", NetherEngine::new);
+        DIMENSIONALESSENCE = ITEMS.register("dimensionalessence", DimensionalEssence::new);
+        AETHERFRAGMENT = ITEMS.register("aetherfragment", AetherFragment::new);
+        AETHERINGOT = ITEMS.register("aetheringot", AetherIngot::new);
+        SCULKBONE= ITEMS.register("sculkbone", SculkBone::new);
+        SCULKFRAGMENT= ITEMS.register("sculkfragment", SculkFragment::new);
 
     }
 
