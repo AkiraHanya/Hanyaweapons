@@ -6,12 +6,11 @@ import net.minecraft.world.item.Item;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-
 public class SakuraIngot extends Item {
-    @OnlyIn(Dist.CLIENT)
-    private List<Component> tooltipExpand;
 
-    public SakuraIngot(Item.Properties properties) {
+    public SakuraIngot() {
         super(new Item.Properties().stacksTo(64));
     }
+    @OnlyIn(Dist.CLIENT)
+    private List<Component> tooltipExpand;
 }

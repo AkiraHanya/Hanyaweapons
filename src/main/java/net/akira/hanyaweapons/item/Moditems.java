@@ -1,6 +1,7 @@
 package net.akira.hanyaweapons.item;
 
 import net.akira.hanyaweapons.item.equipment.*;
+import net.akira.hanyaweapons.item.material.*;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
